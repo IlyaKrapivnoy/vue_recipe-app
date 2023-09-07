@@ -174,14 +174,18 @@ h1 {
 .recipes .card .card-title {
   display: flex;
   justify-content: space-between;
-  max-height: 40px;
-  padding-bottom: 20px;
+  max-height: 60px;
+  padding-bottom: 10px;
   border-bottom: 1px solid white;
+  overflow: hidden;
 }
 
-.recipes .card h2 {
+.recipes .card .card-title h2 {
   font-size: 32px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .recipes .card p {
