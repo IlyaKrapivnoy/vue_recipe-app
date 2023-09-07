@@ -1,7 +1,9 @@
 <template>
   <main class="recipe">
-    <router-link to="/">&lt; Back</router-link>
-    <h1>{{ recipe.title }}</h1>
+    <div class="recipe-header">
+      <h1>{{ recipe.title }}</h1>
+      <router-link to="/" class="btn-back">&lt; Back</router-link>
+    </div>
     <p class="desc">{{ recipe.description }}</p>
     <hr />
     <div class="ingredients">
@@ -42,11 +44,24 @@ const cleanText = (text) => {
 };
 </script>
 
-<style>
+<style scoped>
 .recipe {
   padding: 1rem;
   max-width: 768px;
   margin: 0 auto;
+}
+
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+}
+
+.btn-back {
+  border: 2px solid #2aeb74;
+  border-radius: 4px;
+  padding: 10px 13px;
 }
 
 .desc {
