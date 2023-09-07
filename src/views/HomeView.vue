@@ -66,70 +66,57 @@
   </main>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 import { useStore } from "vuex";
 
-export default {
-  name: "home-page",
-  setup() {
-    const newRecipe = ref({
-      title: "",
-      description: "",
-      ingredients: [],
-      method: [],
-      ingredientRows: 1,
-      methodRows: 1,
-    });
-    const popupOpen = ref(false);
-    const store = useStore();
+const store = useStore();
+const popupOpen = ref(false);
 
-    const togglePopup = () => {
-      popupOpen.value = !popupOpen.value;
-    };
+const newRecipe = ref({
+  title: "",
+  description: "",
+  ingredients: [],
+  method: [],
+  ingredientRows: 1,
+  methodRows: 1,
+});
 
-    const addNewIngredient = () => {
-      newRecipe.value.ingredientRows++;
-    };
+const togglePopup = () => {
+  popupOpen.value = !popupOpen.value;
+};
 
-    const addNewStep = () => {
-      newRecipe.value.methodRows++;
-    };
+const addNewIngredient = () => {
+  newRecipe.value.ingredientRows++;
+};
 
-    const addNewRecipe = () => {
-      newRecipe.value.slug = newRecipe.value.title
-        .toLowerCase()
-        .replace(/\s/g, "-");
+const addNewStep = () => {
+  newRecipe.value.methodRows++;
+};
 
-      const titleIsEmpty = !newRecipe.value.slug;
-      if (titleIsEmpty) {
-        alert("Please enter a title");
-        return;
-      }
+const addNewRecipe = () => {
+  newRecipe.value.slug = newRecipe.value.title
+    .toLowerCase()
+    .replace(/\s/g, "-");
 
-      store.commit("ADD_RECIPE", { ...newRecipe.value });
+  const titleIsEmpty = !newRecipe.value.slug;
+  if (titleIsEmpty) {
+    alert("Please enter a title");
+    return;
+  }
 
-      newRecipe.value = {
-        title: "",
-        description: "",
-        ingredients: [],
-        method: [],
-        ingredientRows: 1,
-        methodRows: 1,
-      };
+  store.commit("ADD_RECIPE", { ...newRecipe.value });
 
-      togglePopup();
-    };
+  newRecipe.value = {
+    title: "",
+    description: "",
+    ingredients: [],
+    method: [],
+    ingredientRows: 1,
+    methodRows: 1,
+  };
 
-    return {
-      newRecipe,
-      addNewRecipe,
-      togglePopup,
-      popupOpen,
-      addNewStep,
-      addNewIngredient,
-    };
-  },
+  togglePopup();
 };
 </script>
 
