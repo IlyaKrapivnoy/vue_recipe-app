@@ -9,7 +9,12 @@
         v-for="recipe in $store.state.recipes"
         :key="recipe.slug"
       >
-        <h2>{{ recipe.title }}</h2>
+        <div class="card-title">
+          <h2>{{ recipe.title }}</h2>
+          <button @click="deleteRecipe(recipe.slug)" class="remove-btn">
+            x
+          </button>
+        </div>
         <p>{{ recipe.description }}</p>
         <router-link :to="`/recipe/${recipe.slug}`">
           <button>View Recipe</button>
@@ -127,6 +132,10 @@ const addNewRecipe = () => {
 
   togglePopup();
 };
+
+const deleteRecipe = (slug) => {
+  store.commit("DELETE_RECIPE", slug);
+};
 </script>
 
 <style scoped>
@@ -142,6 +151,14 @@ h1 {
   margin-bottom: 32px;
 }
 
+.remove-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+}
+
 .recipes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -152,6 +169,14 @@ h1 {
   border-radius: 5px;
   margin: 16px;
   background-color: #081c33;
+}
+
+.recipes .card .card-title {
+  display: flex;
+  justify-content: space-between;
+  max-height: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid white;
 }
 
 .recipes .card h2 {
