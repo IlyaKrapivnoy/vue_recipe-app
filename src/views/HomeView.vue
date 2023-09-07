@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <main class="home">
     <h1>My Recipes</h1>
     <button @click="togglePopup">Add new Recipe</button>
 
@@ -63,7 +63,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -101,7 +101,8 @@ export default {
         .toLowerCase()
         .replace(/\s/g, "-");
 
-      if (!newRecipe.value.slug) {
+      const titleIsEmpty = !newRecipe.value.slug;
+      if (titleIsEmpty) {
         alert("Please enter a title");
         return;
       }

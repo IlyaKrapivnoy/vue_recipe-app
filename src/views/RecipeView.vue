@@ -1,5 +1,5 @@
 <template>
-  <div class="recipe">
+  <main class="recipe">
     <router-link to="/">&lt; Back</router-link>
     <h1>{{ recipe.title }}</h1>
     <p class="desc">{{ recipe.description }}</p>
@@ -20,7 +20,7 @@
         </li>
       </ol>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
