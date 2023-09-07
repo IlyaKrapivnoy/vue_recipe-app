@@ -23,20 +23,22 @@
   </main>
 </template>
 
-<script>
-export default {
-  computed: {
-    recipe() {
-      return this.$store.state.recipes.find(
-        (recipe) => recipe.slug === this.$route.params.slug
-      );
-    },
-  },
-  methods: {
-    cleanText(text) {
-      return text.replace(/\n/g, "<br />");
-    },
-  },
+<script setup>
+import { computed } from "vue";
+import { useStore } from "vuex";
+import { useRoute } from "vue-router";
+
+const store = useStore();
+const route = useRoute();
+
+const recipe = computed(() => {
+  return store.state.recipes.find(
+    (recipe) => recipe.slug === route.params.slug
+  );
+});
+
+const cleanText = (text) => {
+  return text.replace(/\n/g, "<br />");
 };
 </script>
 
