@@ -100,8 +100,17 @@ const addNewRecipe = () => {
     .replace(/\s/g, "-");
 
   const titleIsEmpty = !newRecipe.value.slug;
-  if (titleIsEmpty) {
-    alert("Please enter a title");
+  const descriptionIsEmpty = !newRecipe.value.description;
+  const ingredientsAreEmpty = newRecipe.value.ingredients.length === 0;
+  const methodIsEmpty = newRecipe.value.method.length === 0;
+
+  if (
+    titleIsEmpty ||
+    descriptionIsEmpty ||
+    ingredientsAreEmpty ||
+    methodIsEmpty
+  ) {
+    alert("Please fill in all required fields");
     return;
   }
 
