@@ -4,9 +4,13 @@
     <button @click="togglePopup">Add new Recipe</button>
 
     <div class="recipes">
+      <div v-if="store.state.recipes.length === 0" class="no-recipes">
+        There is no data for now...
+      </div>
+
       <div
         class="card"
-        v-for="recipe in $store.state.recipes"
+        v-for="recipe in store.state.recipes"
         :key="recipe.slug"
       >
         <div class="card-title">
@@ -192,6 +196,7 @@ h1 {
   font-size: 18px;
   line-height: 1.4;
   margin-bottom: 16px;
+  padding: 16px 0;
 }
 
 .add-recipe-popup {
@@ -262,5 +267,13 @@ h1 {
 .red-button {
   background-color: #bb3636;
   color: white;
+}
+
+.no-recipes {
+  padding: 40px 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: #2aeb74;
+  letter-spacing: 3px;
 }
 </style>
