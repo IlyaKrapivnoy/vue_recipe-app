@@ -122,14 +122,14 @@ const addNewRecipe = () => {
 
 <style scoped>
 .home {
-  padding: 1rem;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 48px;
   margin-bottom: 32px;
 }
 
@@ -139,21 +139,21 @@ h1 {
 }
 
 .recipes .card {
-  padding: 1rem;
+  padding: 16px;
   border-radius: 5px;
-  margin: 1rem;
+  margin: 16px;
   background-color: #081c33;
 }
 
 .recipes .card h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 32px;
+  margin-bottom: 16px;
 }
 
 .recipes .card p {
-  font-size: 1.125rem;
+  font-size: 18px;
   line-height: 1.4;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .add-recipe-popup {
@@ -170,8 +170,8 @@ h1 {
 
 .add-recipe-popup .popup-content {
   background-color: #081c33;
-  padding: 2rem;
-  border-radius: 1rem;
+  padding: 32px;
+  border-radius: 16px;
   width: 100%;
   max-width: 768px;
   max-height: 80vh;
@@ -179,27 +179,27 @@ h1 {
 }
 
 .popup-content h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 32px;
+  margin-bottom: 16px;
 }
 
 .popup-content .group {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .popup-content .group label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 .popup-content .group input,
 .popup-content .group textarea {
   display: block;
   width: 100%;
-  padding: 0.5rem;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .popup-content .group textarea {
@@ -208,7 +208,7 @@ h1 {
 }
 
 .popup-content button[type="submit"] {
-  margin-right: 1rem;
+  margin-right: 16px;
 }
 
 .button-container {
