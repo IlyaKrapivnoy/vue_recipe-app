@@ -1,7 +1,9 @@
 <template>
-  <div class="recipe">
-    <router-link to="/">&lt; Back</router-link>
-    <h1>{{ recipe.title }}</h1>
+  <main class="recipe">
+    <div class="recipe-header">
+      <h1>{{ recipe.title }}</h1>
+      <router-link to="/" class="btn-back">&lt; Back</router-link>
+    </div>
     <p class="desc">{{ recipe.description }}</p>
     <hr />
     <div class="ingredients">
@@ -20,63 +22,78 @@
         </li>
       </ol>
     </div>
-  </div>
+  </main>
 </template>
 
-<script>
-export default {
-  computed: {
-    recipe() {
-      return this.$store.state.recipes.find(
-        (recipe) => recipe.slug === this.$route.params.slug
-      );
-    },
-  },
-  methods: {
-    cleanText(text) {
-      return text.replace(/\n/g, "<br />");
-    },
-  },
+<script setup>
+import { computed } from "vue";
+import { useStore } from "vuex";
+import { useRoute } from "vue-router";
+
+const store = useStore();
+const route = useRoute();
+
+const recipe = computed(() => {
+  return store.state.recipes.find(
+    (recipe) => recipe.slug === route.params.slug
+  );
+});
+
+const cleanText = (text) => {
+  return text.replace(/\n/g, "<br />");
 };
 </script>
 
-<style>
+<style scoped>
 .recipe {
-  padding: 1rem;
+  padding: 16px;
   max-width: 768px;
   margin: 0 auto;
 }
 
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+}
+
+.btn-back {
+  border: 2px solid #2aeb74;
+  border-radius: 4px;
+  padding: 10px 13px;
+}
+
 .desc {
-  font-size: 1.125rem;
+  font-size: 18px;
   line-height: 1.4;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 hr {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .ingredients {
-  padding: 1rem;
+  padding: 16px;
   background-color: #081c33;
-  border-radius: 0.5rem;
-  margin-bottom: 2rem;
+  border-radius: 8px;
+  margin-bottom: 32px;
 }
 
 .ingredients ul li {
   list-style-position: inside;
   line-height: 1.4;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .method ol li {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
   list-style-position: inside;
   border-bottom: 1px solid #eee;
 }
