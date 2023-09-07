@@ -5,7 +5,12 @@
 
     <div class="recipes">
       <div v-if="store.state.recipes.length === 0" class="no-recipes">
-        There is no data for now...
+        There is no data for now
+        <div class="loading-dots">
+          <div class="dot dot-1"></div>
+          <div class="dot dot-2"></div>
+          <div class="dot dot-3"></div>
+        </div>
       </div>
 
       <div
@@ -270,10 +275,49 @@ h1 {
 }
 
 .no-recipes {
-  padding: 40px 0;
+  display: flex;
+  margin: 40px 0;
   text-align: center;
   text-transform: uppercase;
   color: #2aeb74;
   letter-spacing: 3px;
+}
+
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  margin-left: 4px;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  background-color: #333;
+  border-radius: 50%;
+  margin: 0 3px;
+  animation: jump 0.6s infinite alternate;
+}
+
+.dot-1 {
+  animation-delay: 0.1s;
+}
+
+.dot-2 {
+  animation-delay: 0.2s;
+}
+
+.dot-3 {
+  animation-delay: 0.3s;
+}
+
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
 }
 </style>
